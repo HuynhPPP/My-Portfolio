@@ -41,7 +41,7 @@
 
   &:nth-child(1) {
     border: none;
-    background: url("../../assets/cat3.jpeg") center / cover no-repeat;
+    background: url("../../assets/skills.jpg") center / cover no-repeat;
   }
 
   &:nth-child(2) {

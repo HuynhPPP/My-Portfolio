@@ -21,15 +21,34 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Grid Background Wrapper */
+.grid-background-wrapper {
+  min-height: 100vh;
+  width: 100%;
   background-color: var(--foreground-color);
-  background-size: 7px 7px;
-  background-image: repeating-linear-gradient(
-    45deg,
-    hsla(var(--p-500-code), 0.1) 0,
-    hsla(var(--p-700-code), 0.1) 0.7000000000001px,
-    var(--foreground-color) 0,
-    var(--foreground-color) 50%
-  );
+  position: relative;
+}
+
+/* Top Fade Grid Background */
+.grid-background-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: linear-gradient(to right, var(--p-100) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--p-100) 1px, transparent 1px);
+  background-size: 20px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%);
+}
+
+/* Page Content */
+.page-content {
+  position: relative;
+  z-index: 1;
 }
 
 a {
