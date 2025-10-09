@@ -56,7 +56,6 @@
   & h4 {
     font-size: var(--caption-font-size);
     line-height: var(--caption-line-height);
-    text-transform: capitalize;
     color: var(--n-500);
   }
 
@@ -68,7 +67,6 @@
     color: var(--p-950);
 
     display: -webkit-box;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     line-clamp: 1;
     overflow: hidden;
