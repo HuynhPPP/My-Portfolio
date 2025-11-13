@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="icon" href="./assets/rocket-icon.ico" />
+    <link rel="icon" href="./assets/Avatart.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -474,7 +474,7 @@
           <div class="container projects_container">
             <!-- Header -->
             <div class="section__header">
-              <h1 class="section__title">Đồ Án Thực Chiến</h1>
+              <h1 class="section__title">Dự Án - Đồ Án Thực Chiến</h1>
               <p class="section__description">
                 Bộ sưu tập dự án thực tập tại trường này giúp mình củng cố và
                 hoàn thiện những kỹ năng kỹ thuật cũng như khả năng giải quyết
@@ -482,127 +482,110 @@
               </p>
             </div>
 
-            <!-- Cards -->
+            <!-- Tabs + Cards: split into two columns (personal projects | school projects) -->
+            <div class="projects__tabs" role="tablist" aria-label="Projects filter">
+              <button class="projects__tab projects__tab--active" data-filter="all" role="tab" aria-selected="true">Tất cả</button>
+              <button class="projects__tab" data-filter="personal" role="tab" aria-selected="false">Dự án cá nhân</button>
+              <button class="projects__tab" data-filter="school" role="tab" aria-selected="false">Đồ án tại trường</button>
+            </div>
+
             <div class="projects__cards_container">
-              <a
-                href="https://hpcode-todoxapp.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="projects_cards">
-                  <div class="projects__cards_wrapper">
-                    <img
-                      src="./assets/project/todo_X_project.png"
-                      alt="project1"
-                      class="projects__cards_img"
-                    />
-                  </div>
-                  <div class="projects__cards_titles">
-                    <h1>Dự án 1</h1>
-                    <h3>Todo List</h3>
-                  </div>
-                </div>
-              </a>
+              <div class="projects__column projects__personal">
+                <h2 class="projects__column_title">Dự án cá nhân</h2>
+                <div class="projects__cards_grid">
+                  <a href="https://hpcode-todoxapp.onrender.com/" target="_blank" rel="noopener noreferrer">
+                    <div class="projects_cards">
+                      <div class="projects__cards_wrapper">
+                        <img src="./assets/project/todo_X_project.png" alt="todo app" class="projects__cards_img" />
+                      </div>
+                      <div class="projects__cards_titles">
+                        <h1>Dự án 1</h1>
+                        <h3>Todo List</h3>
+                      </div>
+                    </div>
+                  </a>
 
-              <a
-                href="https://quiz-app-on6l.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="projects_cards">
-                  <div class="projects__cards_wrapper">
-                    <img
-                      src="./assets/project/Quiz_App_project.png"
-                      alt="project1"
-                      class="projects__cards_img"
-                    />
-                  </div>
-                  <div class="projects__cards_titles">
-                    <h1>Dự án 2</h1>
-                    <h3>Quiz Application</h3>
-                  </div>
-                </div>
-              </a>
+                  <a href="https://quiz-app-on6l.onrender.com/" target="_blank" rel="noopener noreferrer">
+                    <div class="projects_cards">
+                      <div class="projects__cards_wrapper">
+                        <img src="./assets/project/Quiz_App_project.png" alt="quiz app" class="projects__cards_img" />
+                      </div>
+                      <div class="projects__cards_titles">
+                        <h1>Dự án 2</h1>
+                        <h3>Quiz Application</h3>
+                      </div>
+                    </div>
+                  </a>
 
-              <a
-                href="https://khuonghuynhit.id.vn/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="projects_cards">
-                  <div class="projects__cards_wrapper">
-                    <img
-                      src="./assets/project/angiang_tourism_project.png"
-                      alt="project1"
-                      class="projects__cards_img"
-                    />
-                  </div>
-                  <div class="projects__cards_titles">
-                    <h1>Dự án 3</h1>
-                    <h3>An Giang Tourism</h3>
-                  </div>
-                </div>
-              </a>
+                  <a href="https://khuonghuynhit.id.vn/" target="_blank" rel="noopener noreferrer">
+                    <div class="projects_cards">
+                      <div class="projects__cards_wrapper">
+                        <img src="./assets/project/angiang_tourism_project.png" alt="angiang tourism" class="projects__cards_img" />
+                      </div>
+                      <div class="projects__cards_titles">
+                        <h1>Dự án 3</h1>
+                        <h3>An Giang Tourism</h3>
+                      </div>
+                    </div>
+                  </a>
 
-              <a
-                href="https://github.com/HuynhPPP?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="projects_cards">
-                  <div class="projects__cards_wrapper">
-                    <img
-                      src="./assets/project/project_3.png"
-                      alt="project1"
-                      class="projects__cards_img"
-                    />
-                  </div>
-                  <div class="projects__cards_titles">
-                    <h1>Đồ án 3</h1>
-                    <h3>Website tìm kiếm việc làm</h3>
-                  </div>
-                </div>
-              </a>
+                  <a href="https://github.com/HuynhPPP?tab=repositories" target="_blank" rel="noopener noreferrer">
+                    <div class="projects_cards">
+                      <div class="projects__cards_wrapper">
+                        <img src="./assets/project/emc_project.png" alt="ecommerce" class="projects__cards_img" />
+                      </div>
+                      <div class="projects__cards_titles">
+                        <h1>Dự án 4</h1>
+                        <h3>Ecommerce Website</h3>
+                      </div>
+                    </div>
+                  </a>
 
-              <a
-                href="https://github.com/HuynhPPP?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="projects_cards">
-                  <div class="projects__cards_wrapper">
-                    <img
-                      src="./assets/project/project_4.png"
-                      alt="project1"
-                      class="projects__cards_img"
-                    />
-                  </div>
-                  <div class="projects__cards_titles">
-                    <h1>Đồ án 4</h1>
-                    <h3>Website tìm kiếm và cho thuê phòng trọ</h3>
-                  </div>
+                  <a href="https://my-spotify-rav3.onrender.com/" target="_blank" rel="noopener noreferrer">
+                    <div class="projects_cards">
+                      <div class="projects__cards_wrapper">
+                        <img src="./assets/project/project-my-sportify.png" alt="project-my-sportify" class="projects__cards_img" />
+                      </div>
+                      <div class="projects__cards_titles">
+                        <h1>Dự án 5</h1>
+                        <h3>My-Spotify</h3>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-              </a>
+              </div>
 
-              <a
-                href="https://github.com/HuynhPPP?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="projects_cards">
-                  <div class="projects__cards_wrapper">
-                    <img
-                      src="./assets/project/emc_project.png"
-                      alt="project1"
-                      class="projects__cards_img"
-                    />
-                  </div>
-                  <div class="projects__cards_titles">
-                    <h1>Dự án 5</h1>
-                    <h3>Ecommerce Website</h3>
-                  </div>
+              
+              <div class="projects__column projects__school">
+                <h2 class="projects__column_title">Đồ án</h2>
+                <div class="projects__cards_grid">
+                  <a href="https://github.com/HuynhPPP?tab=repositories" target="_blank" rel="noopener noreferrer">
+                    <div class="projects_cards">
+                      <div class="projects__cards_wrapper">
+                        <img src="./assets/project/project_3.png" alt="project 3" class="projects__cards_img" />
+                      </div>
+                      <div class="projects__cards_titles">
+                        <h1>Đồ án 3</h1>
+                        <h3>Website tìm kiếm việc làm</h3>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="https://github.com/HuynhPPP?tab=repositories" target="_blank" rel="noopener noreferrer">
+                    <div class="projects_cards">
+                      <div class="projects__cards_wrapper">
+                        <img src="./assets/project/project_4.png" alt="project 4" class="projects__cards_img" />
+                      </div>
+                      <div class="projects__cards_titles">
+                        <h1>Đồ án 4</h1>
+                        <h3>Website tìm kiếm và cho thuê phòng trọ</h3>
+                      </div>
+                    </div>
+                  </a>
+
+                  
                 </div>
-              </a>
+              </div>
             </div>
           </div>
         </section>
@@ -619,5 +602,28 @@
       <!-- End Page Content -->
     </div>
     <!-- End Background Grid Wrapper -->
+    <script>
+      (function(){
+        // Tabs behaviour for projects section
+        const tabs = document.querySelectorAll('.projects__tab');
+        const container = document.querySelector('.projects__cards_container');
+
+        if(!tabs || !container) return;
+
+        function setActive(filter){
+          tabs.forEach(t => {
+            const isActive = t.getAttribute('data-filter') === filter;
+            t.classList.toggle('projects__tab--active', isActive);
+            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+
+          container.classList.remove('is-filter-personal','is-filter-school');
+          if(filter === 'personal') container.classList.add('is-filter-personal');
+          if(filter === 'school') container.classList.add('is-filter-school');
+        }
+
+        tabs.forEach(t => t.addEventListener('click', ()=> setActive(t.getAttribute('data-filter'))));
+      })();
+    </script>
   </body>
 </html>

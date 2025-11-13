@@ -5,13 +5,75 @@
 }
 
 .projects__cards_container {
-  display: grid;
-  margin: 0 auto;
-  max-width: 90%;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 340px));
-  grid-gap: 32px;
+  /* container now holds two columns: personal and school */
+  display: flex;
+  gap: 32px;
   justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 12px;
+}
+
+.projects__column {
+  flex: 1 1 0;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.projects__column_title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--p-950);
+  margin: 0 8px;
+}
+
+.projects__cards_grid {
+  /* inside each column: show 2 cards per row on desktop, 1 on small screens */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 24px;
+  justify-content: stretch;
+  align-items: start;
+}
+
+/* Tabs styles */
+.projects__tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center; /* center the tab buttons horizontally */
   align-items: center;
+  width: 100%;
+  margin: 0 8px 18px 8px;
+}
+
+.projects__tab {
+  background: transparent;
+  border: 1px solid hsla(var(--p-700-code), 0.12);
+  color: var(--p-950);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.18s ease;
+}
+
+.projects__tab:hover {
+  transform: translateY(-2px);
+}
+
+.projects__tab--active {
+  background: linear-gradient(90deg, rgba(99,102,241,0.12), rgba(56,189,248,0.08));
+  border-color: rgba(99,102,241,0.28);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+/* Filter helpers: hide one column when filtered */
+.projects__cards_container.is-filter-personal .projects__school,
+.projects__cards_container.is-filter-school .projects__personal {
+  display: none;
 }
 
 .projects_cards {
@@ -36,10 +98,11 @@
 }
 
 .projects__cards_img {
-  width: 284px;
-  height: 284px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 24px;
+  border-radius: 18px;
   transition: transform 0.5s ease;
 
   &:hover {
@@ -70,5 +133,22 @@
     -webkit-line-clamp: 1;
     line-clamp: 1;
     overflow: hidden;
+  }
+}
+
+/* Responsive: stack columns on narrow screens */
+@media (max-width: 900px) {
+  .projects__cards_container {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .projects__column_title {
+    margin-left: 4px;
+  }
+
+  .projects__cards_grid {
+    grid-template-columns: 1fr;
+    justify-content: center;
   }
 }
