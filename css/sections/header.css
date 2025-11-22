@@ -1,5 +1,8 @@
+/* header.css */
+
 header {
-  margin-top: 40px;
+  margin-top: 0;
+  padding: 20px 0;
 }
 
 .header__container {
@@ -20,6 +23,8 @@ header {
   font-size: var(--h2-font-size);
   line-height: var(--h2-line-height);
   font-weight: 600;
+  /* Thêm text-shadow nhẹ để chữ nổi bật hơn */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .header__column--left {
@@ -34,25 +39,52 @@ header {
     gap: 8px;
   }
 
+  /* === PHẦN BADGE ĐÃ SỬA LẠI === */
   & .header__badge_container {
     display: flex;
-    gap: 6px;
+    gap: 8px; /* Tăng khoảng cách giữa các badge một chút */
     text-align: center;
 
     & .badge {
-      font-size: var(--caption-font-size);
-      line-height: var(--caption-line-height);
-      color: var(--p-950);
-      padding: 4px 12px;
-      border-radius: 4px;
-      background-color: var(--p-50);
-      /* line clamp */
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      /* 1. Cấu trúc hình dáng (Tech Style) */
+      font-size: 0.75rem; /* Chữ nhỏ gọn (tương đương 12px) */
+      font-weight: 700; /* In đậm */
+      text-transform: uppercase; /* Chữ in hoa */
+      letter-spacing: 0.5px; /* Giãn chữ */
+      padding: 6px 12px;
+      border-radius: 4px; /* Vuông vắn */
+
+      /* 2. Màu sắc (Dùng biến để tự đổi màu theo Theme) */
+      background-color: var(--p-50); /* Light: Tím nhạt | Dark: Đen đỏ */
+      border: 1px solid var(--p-200); /* Light: Viền tím | Dark: Viền đỏ tối */
+      color: var(--p-600); /* Light: Tím đậm | Dark: Đỏ Neon (#ff003c) */
+
+      /* 3. Xử lý hiển thị */
+      display: inline-flex; /* Dùng flex để canh giữa chữ tốt hơn */
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap; /* Không xuống dòng */
+
+      /* 4. Hiệu ứng chuyển động */
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    /* Hiệu ứng khi di chuột vào Badge */
+    & .badge:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bóng mờ mặc định */
     }
   }
+}
+
+/* CSS riêng cho Dark Mode để tạo hiệu ứng phát sáng (Glow) */
+/* Lưu ý: Đoạn này nằm trong header.css nhưng sẽ ăn theo class body.dark-mode */
+body.dark-mode .badge:hover {
+  box-shadow: var(--glow-strong); /* Phát sáng đỏ khi hover ở chế độ tối */
+  background-color: rgba(255, 0, 60, 0.1); /* Nền đỏ trong suốt */
+  color: var(--accent-color);
 }
 
 .header__column--right {
@@ -71,7 +103,10 @@ header {
   background-size: cover;
   border-radius: 100px;
   flex-shrink: 0;
+  /* Box shadow tinh tế hơn */
   box-shadow: inset 0px -1px 1px hsla(0, 0%, 100%, 0.5),
     0 4px 6px -1 hsla(0, 0%, 0%, 0.2), 0 2px 4px -2px hsla(0, 0%, 0%, 0.2),
     inset 0px 1px 3px hsla(0, 0%, 0%, 0.1);
+
+  border: 2px solid var(--bg-secondary); /* Thêm viền để tách biệt với nền */
 }
