@@ -57,7 +57,10 @@
         <!-- End Header -->
 
         <!-- About me -->
-        <section class="aboutMe__section">
+        <section
+          class="aboutMe__section animate-on-scroll"
+          data-animation="fade-in-up"
+        >
           <!-- Hình động 2 bên -->
           <img src="./assets/rocket-icon.svg" alt="rocket-icon" />
 
@@ -94,7 +97,10 @@
         <!-- End About me -->
 
         <!-- Skills -->
-        <section class="skills__section">
+        <section
+          class="skills__section animate-on-scroll"
+          data-animation="fade-in-up"
+        >
           <div class="container skills__container">
             <!-- Header-->
             <div class="section__header">
@@ -470,7 +476,11 @@
         <!-- End Skills -->
 
         <!-- Projects -->
-        <section id="ProjectContainer" class="projects__section">
+        <section
+          id="ProjectContainer"
+          class="projects__section animate-on-scroll"
+          data-animation="fade-in-up"
+        >
           <div class="container projects_container">
             <!-- Header -->
             <div class="section__header">
@@ -523,7 +533,10 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div class="projects_cards">
+                    <div
+                      class="projects_cards animate-on-scroll"
+                      data-animation="scale-in"
+                    >
                       <div class="projects__cards_wrapper">
                         <img
                           src="./assets/project/todo_X_project.png"
@@ -543,7 +556,10 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div class="projects_cards">
+                    <div
+                      class="projects_cards animate-on-scroll animate-delay-100"
+                      data-animation="scale-in"
+                    >
                       <div class="projects__cards_wrapper">
                         <img
                           src="./assets/project/Quiz_App_project.png"
@@ -563,7 +579,10 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div class="projects_cards">
+                    <div
+                      class="projects_cards animate-on-scroll animate-delay-200"
+                      data-animation="scale-in"
+                    >
                       <div class="projects__cards_wrapper">
                         <img
                           src="./assets/project/angiang_tourism_project.png"
@@ -579,11 +598,14 @@
                   </a>
 
                   <a
-                    href="https://github.com/HuynhPPP?tab=repositories"
+                    href="https://e-commerce-xstore.netlify.app/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div class="projects_cards">
+                    <div
+                      class="projects_cards animate-on-scroll animate-delay-300"
+                      data-animation="scale-in"
+                    >
                       <div class="projects__cards_wrapper">
                         <img
                           src="./assets/project/emc_project.png"
@@ -603,7 +625,10 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div class="projects_cards">
+                    <div
+                      class="projects_cards animate-on-scroll animate-delay-400"
+                      data-animation="scale-in"
+                    >
                       <div class="projects__cards_wrapper">
                         <img
                           src="./assets/project/project-my-sportify.png"
@@ -770,6 +795,28 @@
             setActive(t.getAttribute('data-filter'))
           )
         );
+
+        // Scroll Animation Logic with Intersection Observer
+        const animatedElements =
+          document.querySelectorAll('.animate-on-scroll');
+
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px',
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const animationType =
+                entry.target.getAttribute('data-animation') || 'fade-in-up';
+              entry.target.classList.add(`animate-${animationType}`);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        animatedElements.forEach((el) => observer.observe(el));
       })();
     </script>
   </body>
