@@ -1,0 +1,263 @@
+<section
+  id="ProjectContainer"
+  class="projects__section animate-on-scroll"
+  data-animation="fade-in-up"
+>
+  <div class="container projects_container">
+    <!-- Header -->
+    <div class="section__header">
+      <h1 class="section__title">Dự Án - Đồ Án Thực Chiến</h1>
+      <p class="section__description">
+        Bộ sưu tập dự án thực tập tại trường này giúp mình củng cố và hoàn thiện
+        những kỹ năng kỹ thuật cũng như khả năng giải quyết vấn đề một cách sáng
+        tạo.
+      </p>
+    </div>
+
+    <!-- Tabs + Cards: split into two columns (personal projects | school projects) -->
+    <div class="projects__tabs" role="tablist" aria-label="Projects filter">
+      <button
+        class="projects__tab projects__tab--active"
+        data-filter="all"
+        role="tab"
+        aria-selected="true"
+      >
+        Tất cả
+      </button>
+      <button
+        class="projects__tab"
+        data-filter="personal"
+        role="tab"
+        aria-selected="false"
+      >
+        Dự án cá nhân
+      </button>
+      <button
+        class="projects__tab"
+        data-filter="school"
+        role="tab"
+        aria-selected="false"
+      >
+        Đồ án tại trường
+      </button>
+    </div>
+
+    <div class="projects__cards_container">
+      <div class="projects__column projects__personal">
+        <h2 class="projects__column_title">Dự án cá nhân</h2>
+        <div class="projects__cards_grid">
+          <a
+            href="https://hpcode-todoxapp.onrender.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards animate-on-scroll"
+              data-animation="scale-in"
+              data-description="Một ứng dụng quản lý công việc đơn giản nhưng hiệu quả, giúp bạn theo dõi các nhiệm vụ hàng ngày một cách trực quan."
+              data-images="./assets/project/todo_X_project.png,./assets/project/todo_X_project.png,./assets/project/todo_X_project.png"
+              data-techs="React, CSS, LocalStorage"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/todo_X_project.png"
+                  alt="todo app"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Dự án 1</h1>
+                <h3>Todo List</h3>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://quiz-app-on6l.onrender.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards animate-on-scroll animate-delay-100"
+              data-animation="scale-in"
+              data-description="Ứng dụng trắc nghiệm kiến thức với giao diện sinh động, hỗ trợ tính điểm và xem lại kết quả sau khi hoàn thành."
+              data-images="./assets/project/Quiz_App_project.png,./assets/project/Quiz_App_project.png,./assets/project/Quiz_App_project.png"
+              data-techs="HTML, CSS, JavaScript"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/Quiz_App_project.png"
+                  alt="quiz app"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Dự án 2</h1>
+                <h3>Quiz Application</h3>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://angiangtourism.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards animate-on-scroll animate-delay-200"
+              data-animation="scale-in"
+              data-description="Trang web giới thiệu du lịch An Giang, cung cấp thông tin về các địa danh nổi tiếng, ẩm thực và văn hóa đặc trưng."
+              data-images="./assets/project/angiang_tourism_project.png,./assets/project/angiang_tourism_project.png,./assets/project/angiang_tourism_project.png"
+              data-techs="React, TailwindCSS, Vite"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/angiang_tourism_project.png"
+                  alt="angiang tourism"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Dự án 3</h1>
+                <h3>An Giang Tourism</h3>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://e-commerce-xstore.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards animate-on-scroll animate-delay-300"
+              data-animation="scale-in"
+              data-description="Nền tảng thương mại điện tử hiện đại, hỗ trợ giỏ hàng, thanh toán trực tuyến và quản lý đơn hàng chuyên nghiệp."
+              data-images="./assets/project/emc_project.png,./assets/project/emc_project.png,./assets/project/emc_project.png"
+              data-techs="React, NodeJS, MongoDB"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/emc_project.png"
+                  alt="ecommerce"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Dự án 4</h1>
+                <h3>Ecommerce Website</h3>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://my-spotify-rav3.onrender.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards animate-on-scroll animate-delay-400"
+              data-animation="scale-in"
+              data-description="Ứng dụng nghe nhạc tương tự Spotify, cho phép người dùng tạo playlist, khám phá các bài hát mới và thưởng thức âm nhạc chất lượng cao."
+              data-images="./assets/project/project-my-sportify.png,./assets/project/project-my-sportify.png,./assets/project/project-my-sportify.png"
+              data-techs="React, Firebase, Spotify API"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/project-my-sportify.png"
+                  alt="project-my-sportify"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Dự án 5</h1>
+                <h3>My-Spotify</h3>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://radioshop.vn/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards animate-on-scroll animate-delay-400"
+              data-animation="scale-in"
+              data-description="Trang thương mại điện tử chuyên về thiết bị radio, với hệ thống quản lý sản phẩm và quy trình thanh toán tối ưu."
+              data-images="./assets/project/Radio_Shopping/radishopping_project_2.png,./assets/project/Radio_Shopping/radioshopping_project_3.png,./assets/project/Radio_Shopping/radishopping_project_4.png,./assets/project/Radio_Shopping/radishopping_project_5.png,./assets/project/Radio_Shopping/radishopping_project_6.png,./assets/project/Radio_Shopping/radishopping_project_7.png,./assets/project/Radio_Shopping/radishopping_project_8.png"
+              data-techs="React/NextJS, Wordpress API"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/Radio_Shopping/radio_shopping_project.png"
+                  alt="radio_shopping_project"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Dự án 6</h1>
+                <h3>Radio Shopping</h3>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="projects__column projects__school">
+        <h2 class="projects__column_title">Đồ án</h2>
+        <div class="projects__cards_grid">
+          <a
+            href="https://github.com/HuynhPPP?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards"
+              data-description="Đồ án tốt nghiệp tại trường: Xây dựng nền tảng kết nối giữa người tìm việc và nhà tuyển dụng với các thuật toán gợi ý việc làm thông minh."
+              data-images="./assets/project/project_3.png,./assets/project/project_3.png,./assets/project/project_3.png"
+              data-techs="Laravel, PHP, MySQL, Bootstrap"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/project_3.png"
+                  alt="project 3"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Đồ án 3</h1>
+                <h3>Website tìm kiếm việc làm</h3>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/HuynhPPP?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              class="projects_cards"
+              data-description="Đồ án tại trường: Hệ thống đăng tin và quản lý cho thuê phòng trọ, hỗ trợ tìm kiếm theo vị trí và tiện ích."
+              data-images="./assets/project/project_4.png,./assets/project/project_4.png,./assets/project/project_4.png"
+              data-techs="React, Firebase, Leaflet Maps"
+            >
+              <div class="projects__cards_wrapper">
+                <img
+                  src="./assets/project/project_4.png"
+                  alt="project 4"
+                  class="projects__cards_img"
+                />
+              </div>
+              <div class="projects__cards_titles">
+                <h1>Đồ án 4</h1>
+                <h3>Website tìm kiếm và cho thuê phòng trọ</h3>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
