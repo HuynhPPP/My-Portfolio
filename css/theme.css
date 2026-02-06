@@ -186,46 +186,53 @@ table {
   --gradient-color: linear-gradient(#fff7ed 10%, #ffffff);
 }
 
-/* SỬA LỖI: Dark Mode - Cyberpunk Red Fixed */
-/* SỬA LỖI: Dark Mode - Cyberpunk Red Fixed */
-body.dark-mode {
-  /* --- 1. MÀU CỐT LÕI (Core Colors) --- */
-  /* Định nghĩa màu đen đỏ Cyberpunk */
-  --bg-primary: #050203; /* Đen sâu */
-  --bg-secondary: #0f0505; /* Đen than */
-  --bg-tertiary: #1a0a0a; /* Đen xám */
+/* NEON PURPLE TECH MODE */
+body.neon-purple-tech {
+  /* --- 1. CORE COLORS (Neon Purple Tech) --- */
+  --bg-primary: #0A0612; /* deep dark purple-black */
+  --bg-secondary: #1A102B; /* Surface / Card */
+  --bg-tertiary: #2D1B3E; /* Lighter surface for hover */
 
-  /* --- 2. SỬA LỖI QUAN TRỌNG (Mapping Variables) --- */
-  /* Dòng này sẽ sửa lỗi nền trắng bạn đang gặp: */
-  --foreground-color: var(--bg-primary); /* Đưa nền Grid về màu đen */
+  /* --- 2. MAPPING VARIABLES --- */
+  --foreground-color: var(--bg-primary);
   --background-color: var(--bg-secondary);
 
-  /* Sửa màu lưới (Grid lines) để nó không bị quá đậm trên nền đen */
-  --p-100: #330a12; /* Màu đỏ đen rất tối cho các đường kẻ */
+  /* Grid lines - subtle purple */
+  --p-100: #1A102B; /* Subtle grid lines */
 
-  /* --- 3. TEXT (Chữ) --- */
-  --text-primary: #e5e5e5;
-  --n-500: #9ca3af;
-  --n-600: #d1d5db; /* Sửa màu text header cho sáng hơn */
-  --p-950: #ffffff;
-  --p-600: #ff003c;
+  /* --- 3. TEXT COLORS --- */
+  --text-primary: #EDE9FE; /* Text main */
+  --n-500: #A78BFA; /* Text muted */
+  --n-600: #C4B5FD; /* Brighter secondary text */
+  --p-950: #FFFFFF; /* Pure white for headers */
+  --p-600: #8B5CF6; /* Neon purple for emphasis */
 
-  /* --- 4. ACCENT (Điểm nhấn) --- */
-  --accent-color: #ff003c;
-  --accent-hover: #ff3366;
-  --border-color: #330a12;
+  /* --- 4. ACCENT COLORS --- */
+  --accent-color: #8B5CF6; /* Neon purple primary */
+  --accent-hover: #A78BFA; /* Lighter purple hover */
+  --accent-secondary: #EC4899; /* Soft neon pink */
+  --border-color: #2D1B3E; /* Subtle borders */
 
-  /* Mã màu dùng cho độ trong suốt (Alpha) */
-  --p-700-code: 0, 100%, 50%; /* Đỏ thuần */
-  --p-950-code: 0, 100%, 20%; /* Đỏ đen */
+  /* Color codes for transparency */
+  --p-700-code: 139, 92, 246; /* Neon purple RGB */
+  --p-950-code: 10, 6, 18; /* Deep purple-black RGB */
 
-  /* --- 5. HIỆU ỨNG --- */
-  --main-gradient-color: linear-gradient(135deg, #ff003c 0%, #990024 100%);
-  --gradient-color: linear-gradient(#050203 10%, #0f0505);
+  /* --- 5. EFFECTS & GRADIENTS --- */
+  --main-gradient-color: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  --gradient-color: linear-gradient(#0A0612 10%, #1A102B);
 
-  /* Glow Variables */
-  --glow-strong: 0 0 15px rgba(255, 0, 60, 0.6);
-  --glow-soft: 0 0 10px rgba(255, 0, 60, 0.2);
+  /* Glow Effects - Neon Purple Tech */
+  --glow-strong: 0 0 25px rgba(139, 92, 246, 0.6);
+  --glow-soft: 0 0 15px rgba(139, 92, 246, 0.3);
+  --glow-subtle: 0 0 8px rgba(236, 72, 153, 0.2);
+  --glow-pink: 0 0 20px rgba(236, 72, 153, 0.4);
+}
+
+/* Neon Purple Tech Mode Specific Styles */
+body.neon-purple-tech {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Transition for smooth theme switch */
@@ -274,15 +281,17 @@ footer,
 #theme-toggle .sun-icon {
   display: none;
 }
+
 #theme-toggle .moon-icon {
-  display: block;
+  display: none;
 }
 
-body.dark-mode #theme-toggle .sun-icon {
-  display: block;
-}
-body.dark-mode #theme-toggle .moon-icon {
+body.neon-purple-tech #theme-toggle .sun-icon {
   display: none;
+}
+
+body.neon-purple-tech #theme-toggle .purple-icon {
+  display: block;
 }
 
 :root {
@@ -323,114 +332,92 @@ body.dark-mode #theme-toggle .moon-icon {
 }
 
 /* =========================================
-   CYBERPUNK COMPONENT OVERRIDES (Dark Mode Only)
-   Dán đoạn này vào cuối file theme.css
+   NEON PURPLE TECH COMPONENT STYLES
    ========================================= */
 
-/* 1. Thay đổi Nút bấm (Buttons) -> Sắc cạnh & Phát sáng */
-body.dark-mode .primaryButton {
-  border-radius: 2px; /* Bỏ bo tròn */
+/* Buttons - Neon Purple Tech */
+body.neon-purple-tech .primaryButton {
+  border-radius: 8px;
   background-color: var(--accent-color);
-  box-shadow: var(--glow-strong); /* Phát sáng đỏ */
+  box-shadow: var(--glow-strong);
   border: 1px solid var(--accent-hover);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.3s ease;
-  /* Tạo hình vát góc (Tech shape) */
-  clip-path: polygon(
-    10px 0,
-    100% 0,
-    100% calc(100% - 10px),
-    calc(100% - 10px) 100%,
-    0 100%,
-    0 10px
-  );
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body.dark-mode .primaryButton:hover {
+body.neon-purple-tech .primaryButton:hover {
   background-color: var(--accent-hover);
-  box-shadow: 0 0 25px rgba(255, 0, 60, 0.8); /* Sáng rực khi hover */
+  box-shadow: var(--glow-strong);
   transform: translateY(-2px);
 }
 
-body.dark-mode .outlineButton {
+body.neon-purple-tech .outlineButton {
   border-color: var(--accent-color);
   color: var(--accent-color);
-  border-radius: 2px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body.dark-mode .outlineButton:hover {
+body.neon-purple-tech .outlineButton:hover {
   box-shadow: var(--glow-soft);
-  background-color: rgba(255, 0, 60, 0.1);
+  background-color: rgba(139, 92, 246, 0.1);
+  transform: scale(1.02);
 }
 
-/* 2. Thay đổi Card Dự án & About -> Giảm bo tròn, thêm viền Neon */
-body.dark-mode .aboutMe__container,
-body.dark-mode .aboutMe__content_container,
-body.dark-mode .projects_cards,
-body.dark-mode .skills__grid_item {
-  border-radius: 8px !important; /* Giảm độ tròn từ 3rem xuống 8px */
+/* Cards - Neon Purple Tech */
+body.neon-purple-tech .aboutMe__container,
+body.neon-purple-tech .aboutMe__content_container,
+body.neon-purple-tech .projects_cards,
+body.neon-purple-tech .skills__grid_item {
+  border-radius: 12px !important;
   border: 1px solid var(--border-color);
   background-color: var(--bg-secondary);
-  box-shadow: none; /* Reset bóng đổ cũ */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body.dark-mode .aboutMe__content_container {
-  background: transparent; /* Để lộ nền container cha */
+body.neon-purple-tech .aboutMe__content_container {
+  background: transparent;
 }
 
-/* Hiệu ứng khi hover vào Card dự án */
-body.dark-mode .projects_cards:hover {
+body.neon-purple-tech .projects_cards:hover {
   border-color: var(--accent-color);
   box-shadow: var(--glow-soft);
-  transform: translateY(-5px); /* Chỉ nảy lên, không skew méo mó */
+  transform: translateY(-8px) scale(1.02);
 }
 
-/* 3. Thay đổi các Tabs (Dự án) */
-body.dark-mode .projects__tab {
-  border-radius: 4px;
-  border-color: var(--border-color);
-  color: var(--n-500);
-}
-
-body.dark-mode .projects__tab--active {
-  background: rgba(255, 0, 60, 0.15);
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  box-shadow: var(--glow-soft);
-}
-
-/* 4. Badges (Skills/Tech) */
-body.dark-mode .icon-badges,
-body.dark-mode .badge {
-  border-radius: 4px;
+/* Badges - Neon Purple Tech */
+body.neon-purple-tech .icon-badges,
+body.neon-purple-tech .badge {
+  border-radius: 6px;
   border: 1px solid var(--border-color);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+  color: var(--text-primary);
 }
 
-body.dark-mode .badge {
+body.neon-purple-tech .badge {
   background-color: var(--bg-tertiary);
   color: var(--accent-color);
 }
 
-/* 5. Text Shadow cho các tiêu đề lớn (Tạo cảm giác màn hình Led) */
-body.dark-mode .section__title,
-body.dark-mode .header__title {
-  text-shadow: 0 0 10px rgba(255, 0, 60, 0.4);
-}
-
-/* 6. Scrollbar (Thanh cuộn) Cyberpunk */
-body.dark-mode::-webkit-scrollbar {
+/* Scrollbar - Neon Purple Tech */
+body.neon-purple-tech::-webkit-scrollbar {
   width: 8px;
 }
-body.dark-mode::-webkit-scrollbar-track {
+
+body.neon-purple-tech::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
-body.dark-mode::-webkit-scrollbar-thumb {
-  background: #7f2537;
+
+body.neon-purple-tech::-webkit-scrollbar-thumb {
+  background: #1A102B;
   border-radius: 0;
 }
-body.dark-mode::-webkit-scrollbar-thumb:hover {
+
+body.neon-purple-tech::-webkit-scrollbar-thumb:hover {
   background: var(--accent-color);
+  box-shadow: var(--glow-soft);
 }
 
 /* GLOBAL SCROLLBAR (Light Mode & Default) */

@@ -1,10 +1,10 @@
-@import "theme.css";
-@import "./sections/header.css";
-@import "./sections/about-me.css";
-@import "./sections/skills.css";
-@import "./sections/projects.css";
-@import "./sections/footer.css";
-@import "./animation.css";
+@import 'theme.css';
+@import './sections/header.css';
+@import './sections/about-me.css';
+@import './sections/skills.css';
+@import './sections/projects.css';
+@import './sections/footer.css';
+@import './animation.css';
 
 * {
   box-sizing: border-box;
@@ -14,7 +14,7 @@
   font-size: var(--p-font-size);
   line-height: var(--p-line-height);
   letter-spacing: var(--p-letter-spacing);
-  font-family: "Chakra Petch", sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-weight: 400;
   font-style: normal;
   scroll-behavior: smooth;
@@ -38,11 +38,20 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: linear-gradient(to right, var(--p-100) 1px, transparent 1px),
-                    linear-gradient(to bottom, var(--p-100) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, var(--p-100) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--p-100) 1px, transparent 1px);
   background-size: 20px 30px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%);
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    #000 60%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    #000 60%,
+    transparent 100%
+  );
 }
 
 /* Page Content */
