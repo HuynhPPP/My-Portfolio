@@ -223,6 +223,9 @@
 
     // Project Previews Logic
     initProjectPreviews();
+    
+    // Contact Component Logic
+    initContactComponent();
   };
 
   /**
@@ -350,6 +353,61 @@
     popup.addEventListener('mouseleave', () => {
       clearTimeout(hoverTimeout);
       hoverTimeout = setTimeout(hidePopup, 100);
+    });
+  };
+
+  /**
+   * Initialize contact component
+   */
+  const initContactComponent = () => {
+    // Add smooth scrolling for contact links
+    const contactLinks = document.querySelectorAll('.contact__link');
+    contactLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Smooth scroll to top for contact section
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Add hover effects for contact methods
+    const contactMethods = document.querySelectorAll('.contact__method');
+    contactMethods.forEach(method => {
+      method.addEventListener('mouseenter', () => {
+        method.style.transform = 'translateY(-4px) scale(1.02)';
+      });
+      
+      method.addEventListener('mouseleave', () => {
+        method.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Add ripple effect to contact buttons
+    const contactButtons = document.querySelectorAll('.contact__btn');
+    contactButtons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
     });
   };
 

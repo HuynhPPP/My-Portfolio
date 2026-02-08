@@ -3,53 +3,338 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1660px;
+  max-width: 1800px;
   position: relative;
+  min-height: 600px;
 
   & img {
     position: absolute;
-    width: 300px;
+    width: 240px;
     height: auto;
+    z-index: -1;
   }
 
   & img:nth-child(1) {
-    top: -20%;
-    left: 1%;
-    z-index: -10;
-    animation: float 6s ease-in-out infinite;
+    z-index: 1000;
+    top: -8%;
+    left: 5%;
+    animation: float 4s ease-in-out infinite;
   }
 
   & img:nth-child(2) {
-    bottom: -20%;
-    right: 0;
-    animation: float 7s 1s ease-in-out infinite;
+    z-index: 1000;
+    bottom: -8%;
+    right: 5%;
+    animation: float 4s 1s ease-in-out infinite;
   }
 }
 
 .aboutMe__container {
-  width: 70%;
-  padding: 48px;
-  background-color: hsla(var(--p-600-code), 0.1);
+  width: 85%;
+  max-width: 1200px;
+  padding: 60px 48px;
+  background-color: var(--p-50);
   border-radius: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .aboutMe__content_container {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
   justify-content: center;
   align-items: center;
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
   border-radius: 3rem;
-  padding: 3rem 0;
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 
   & h1 {
     color: var(--p-600);
+    text-align: center;
+    margin-bottom: 8px;
   }
 
   & p {
     color: var(--n-500);
-    padding: 0 1rem;
+    padding: 0;
+    line-height: 1.7;
+    font-size: 1.15rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+/* Highlight Items Styles */
+.aboutMe__highlights {
+  
+  margin-top: 24px;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  text-align: inherit;
+  margin-bottom: 25px;
+}
+
+.highlight-item:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
+}
+
+.highlight-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.highlight-content {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--n-600);
+}
+
+.highlight-content strong {
+  color: var(--p-600);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+}
+
+/* Neon Purple Tech Mode for highlights */
+body.neon-purple-tech .highlight-item {
+  background: rgba(139, 92, 246, 0.08);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+body.neon-purple-tech .highlight-item:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25);
+}
+
+body.neon-purple-tech .highlight-icon {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+body.neon-purple-tech .highlight-content {
+  color: #A78BFA;
+}
+
+body.neon-purple-tech .highlight-content strong {
+  color: #EDE9FE;
+}
+
+/* Neon Purple Tech Mode for Content Container */
+body.neon-purple-tech .aboutMe__content_container {
+  background: linear-gradient(135deg, rgba(26, 16, 43, 0.95), rgba(45, 27, 62, 0.9));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 8px 32px rgba(10, 6, 18, 0.3);
+}
+
+body.neon-purple-tech .aboutMe__content_container h1 {
+  color: #EDE9FE;
+  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+body.neon-purple-tech .aboutMe__content_container p {
+  color: #A78BFA;
+  text-shadow: 0 1px 4px rgba(139, 92, 246, 0.2);
+}
+
+/* Responsive Design for About Me */
+@media (max-width: 1024px) {
+  .aboutMe__section {
+    margin: 120px auto;
+  }
+
+  .aboutMe__container {
+    width: 90%;
+    padding: 48px 32px;
+  }
+
+  .aboutMe__content_container {
+    padding: 2.5rem 1.5rem;
+    gap: 28px;
+  }
+
+  .aboutMe__content_container p {
+    font-size: 1.1rem;
+    max-width: 650px;
+  }
+
+  .aboutMe__highlights {
+    max-width: 600px;
+    gap: 20px;
+  }
+
+  .highlight-item {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .highlight-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+  }
+
+  .highlight-content {
+    font-size: 0.95rem;
+  }
+
+  .aboutMe__section img {
+    width: 240px;
+  }
+
+  .aboutMe__section img:nth-child(1) {
+    z-index: 1000;
+    top: -8%;
+    left: 3%;
+  }
+
+  .aboutMe__section img:nth-child(2) {
+    z-index: 1000;
+    bottom: -8%;
+    right: 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutMe__section {
+    margin: 80px auto;
+    flex-direction: column;
+    gap: 40px;
+    min-height: auto;
+  }
+
+  .aboutMe__container {
+    width: 92%;
+    padding: 32px 24px;
+  }
+
+  .aboutMe__content_container {
+    padding: 2rem 1rem;
+    gap: 24px;
+  }
+
+  .aboutMe__content_container p {
+    font-size: 1.05rem;
+    max-width: 550px;
+  }
+
+  .aboutMe__highlights {
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .highlight-item {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .highlight-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .highlight-content {
+    font-size: 0.9rem;
+  }
+
+  .aboutMe__section img {
+    width: 200px;
+  }
+
+  .aboutMe__section img:nth-child(1) {
+    top: -10%;
+    left: 5%;
+  }
+
+  .aboutMe__section img:nth-child(2) {
+    bottom: -10%;
+    right: 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutMe__container {
+    width: 95%;
+    padding: 24px 16px;
+  }
+
+  .aboutMe__content_container {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .aboutMe__content_container p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .highlight-item {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .highlight-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+
+  .highlight-content {
+    font-size: 0.85rem;
+  }
+
+  .highlight-content strong {
+    font-size: 1rem;
+  }
+
+  .CTA {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .CTA a {
+    width: 100%;
+    max-width: none;
   }
 }
 

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'about-me-placeholder', path: 'components/about-me.html' },
     { id: 'skills-placeholder', path: 'components/skills.html' },
     { id: 'projects-placeholder', path: 'components/projects.html' },
+    { id: 'contact-placeholder', path: 'components/contact.html' },
     { id: 'footer-placeholder', path: 'components/footer.html' },
   ];
 

@@ -169,6 +169,7 @@ table {
   --n-800: #1f2937;
   --n-900: #111827;
   --n-950: #030712;
+  --p-100-alpha: rgba(139, 92, 246, 0.1);
 
   /* Foreground/Background */
   --foreground-color: #ffffff;
