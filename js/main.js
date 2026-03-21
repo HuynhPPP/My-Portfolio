@@ -234,7 +234,14 @@
   const initProjectPreviews = () => {
     const cards = document.querySelectorAll('.projects_cards');
     let popup = document.getElementById('project-preview-popup');
-    let hoverTimeout;
+    let backdrop = document.getElementById('project-preview-backdrop');
+
+    // Create backdrop if it doesn't exist
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'project-preview-backdrop';
+      document.body.appendChild(backdrop);
+    }
 
     // Create popup if it doesn't exist
     if (!popup) {
@@ -243,62 +250,53 @@
       document.body.appendChild(popup);
     }
 
-    const showPopup = (card, data) => {
-      const rect = card.getBoundingClientRect();
-      const images = data.images.split(',');
-      const techs = data.techs.split(',');
+    const showPopup = (card, data, link) => {
+      const images = data.images ? data.images.split(',') : [];
+      const techs = data.techs ? data.techs.split(',') : [];
       let currentSlide = 0;
+
+      if (images.length === 0) return;
 
       // Build popup content
       popup.innerHTML = `
+        <button class="preview-close-btn" aria-label="Close">&times;</button>
         <div class="preview-slider">
           <div class="preview-slides-container">
-            ${images.map((img) => `<div class="preview-slide"><img src="${img.trim()}" alt="Preview"></div>`).join('')}
+            ${images.map((img) => `<div class="preview-slide"><img src="${img.trim()}" alt="Preview" loading="lazy"></div>`).join('')}
           </div>
           ${
             images.length > 1
               ? `
-            <button class="slider-btn prev-btn">&larr;</button>
-            <button class="slider-btn next-btn">&rarr;</button>
+            <button class="slider-btn prev-btn" aria-label="Previous">&larr;</button>
+            <button class="slider-btn next-btn" aria-label="Next">&rarr;</button>
           `
               : ''
           }
         </div>
         <div class="preview-content">
-          <h2 class="preview-title">${card.querySelector('h3').textContent}</h2>
+          <h2 class="preview-title">${card.querySelector('h3') ? card.querySelector('h3').textContent : 'Project Title'}</h2>
           <p class="preview-description">${data.description}</p>
           <div class="preview-tech-list">
             ${techs.map((tech) => `<span class="tech-badge">${tech.trim()}</span>`).join('')}
           </div>
+          <div class="preview-actions">
+            <a href="${link}" target="_blank" rel="noopener noreferrer" class="preview-visit-btn">Xem website</a>
+          </div>
         </div>
       `;
 
-      // Position popup
-      const popupWidth = 450;
-      const popupHeight = popup.offsetHeight; // This might be 0 initially
+      // Position popup fully centered (Modal style)
+      // We let the CSS handle the standard transform and positioning for modal.
+      // But we need to ensure it overrides any previous element-based positioning.
+      popup.style.left = '50%';
+      popup.style.top = '50%';
+      popup.style.transform = 'translate(-50%, -50%)';
+      popup.style.transformOrigin = 'center center'; // Override absolute placement origin
 
-      let left = rect.left + rect.width / 2 - popupWidth / 2;
-      let top = rect.top - 20; // Default above
-
-      // Adjust if off-screen
-      if (left < 20) left = 20;
-      if (left + popupWidth > window.innerWidth - 20)
-        left = window.innerWidth - popupWidth - 20;
-
-      // If not enough space above, show below
-      // (Temporary fixed height for initial placement logic)
-      const estimatedHeight = 500;
-      if (rect.top < estimatedHeight) {
-        top = rect.bottom + 20;
-        popup.style.transformOrigin = 'top center';
-      } else {
-        top = rect.top - estimatedHeight - 10;
-        popup.style.transformOrigin = 'bottom center';
-      }
-
-      popup.style.left = `${left}px`;
-      popup.style.top = `${top}px`;
+      // Show
+      backdrop.classList.add('show');
       popup.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Lock scroll
 
       // Slider Logic
       const container = popup.querySelector('.preview-slides-container');
@@ -307,24 +305,41 @@
       };
 
       if (images.length > 1) {
-        popup.querySelector('.prev-btn').onclick = (e) => {
-          e.preventDefault();
-          currentSlide = (currentSlide - 1 + images.length) % images.length;
-          updateSlider();
-        };
-        popup.querySelector('.next-btn').onclick = (e) => {
-          e.preventDefault();
-          currentSlide = (currentSlide + 1) % images.length;
-          updateSlider();
-        };
+        const prevBtn = popup.querySelector('.prev-btn');
+        const nextBtn = popup.querySelector('.next-btn');
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentSlide = (currentSlide - 1 + images.length) % images.length;
+            updateSlider();
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentSlide = (currentSlide + 1) % images.length;
+            updateSlider();
+          });
+        }
       }
+
+      // Handle close inside content click if needed, but handled by global listener
     };
 
     const hidePopup = () => {
       popup.classList.remove('show');
+      backdrop.classList.remove('show');
+      document.body.style.overflow = ''; // Restore scroll
     };
 
     cards.forEach((card) => {
+      const parentLink = card.closest('a');
+      const link = parentLink ? parentLink.getAttribute('href') : '#';
+
       const data = {
         description: card.getAttribute('data-description'),
         images: card.getAttribute('data-images'),
@@ -333,26 +348,34 @@
 
       if (!data.description) return; // Skip if no detailed info
 
-      card.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-        hoverTimeout = setTimeout(() => showPopup(card, data), 300);
-      });
-
-      card.addEventListener('mouseleave', () => {
-        clearTimeout(hoverTimeout);
-        // Delay hide slightly to allow moving mouse to popup
-        hoverTimeout = setTimeout(hidePopup, 100);
-      });
+      // Handle click instead of hover
+      if (parentLink) {
+        parentLink.addEventListener('click', (e) => {
+          e.preventDefault(); // Stop navigation
+          showPopup(card, data, link);
+        });
+      } else {
+        card.addEventListener('click', () => {
+          showPopup(card, data, '#');
+        });
+      }
     });
 
-    // Keep popup open when hovering over it
-    popup.addEventListener('mouseenter', () => {
-      clearTimeout(hoverTimeout);
+    // Close on backdrop click
+    backdrop.addEventListener('click', hidePopup);
+
+    // Close on 'X' button or general click inside popup
+    popup.addEventListener('click', (e) => {
+      if (e.target.classList.contains('preview-close-btn')) {
+        hidePopup();
+      }
     });
 
-    popup.addEventListener('mouseleave', () => {
-      clearTimeout(hoverTimeout);
-      hoverTimeout = setTimeout(hidePopup, 100);
+    // Keydown close support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('show')) {
+        hidePopup();
+      }
     });
   };
 

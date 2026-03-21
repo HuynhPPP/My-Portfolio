@@ -228,8 +228,6 @@ body.neon-purple-tech .tech-badge:hover {
   #project-preview-popup {
     width: calc(100vw - 32px);
     max-width: 400px;
-    left: 16px !important;
-    right: 16px !important;
   }
   
   .preview-slider {
@@ -272,8 +270,6 @@ body.neon-purple-tech .tech-badge:hover {
 @media (max-width: 480px) {
   #project-preview-popup {
     width: calc(100vw - 20px);
-    left: 10px !important;
-    right: 10px !important;
   }
   
   .preview-content {
@@ -336,4 +332,95 @@ body.neon-purple-tech .tech-badge:hover {
 
 body.neon-purple-tech .preview-slider::after {
   background: rgba(139, 92, 246, 0.4);
+}
+
+/* --- Added for Modal functionality --- */
+
+/* Close Button */
+.preview-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 24px;
+  line-height: 1;
+  transition: all 0.3s ease;
+  padding: 0;
+  border: none;
+}
+
+.preview-close-btn:hover {
+  background: rgba(220, 38, 38, 0.8);
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* Backdrop */
+#project-preview-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 9998; /* Just below popup */
+  cursor: pointer;
+}
+
+#project-preview-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Action Button */
+.preview-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.preview-visit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white !important;
+  border-radius: 30px;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
+}
+
+.preview-visit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.1);
+}
+
+body.neon-purple-tech .preview-visit-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+body.neon-purple-tech .preview-visit-btn:hover {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
 }
