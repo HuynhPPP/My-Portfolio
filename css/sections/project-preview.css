@@ -2,7 +2,7 @@
 #project-preview-popup {
   position: fixed;
   z-index: 9999;
-  width: 500px;
+  width: 800px;
   max-width: 90vw;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
