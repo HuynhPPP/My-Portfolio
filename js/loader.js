@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const loadComponent = async (component) => {
     try {
-      const response = await fetch(component.path);
+      // Thêm query parameter t để tránh trình duyệt cache file HTML cũ
+      const response = await fetch(`${component.path}?t=${new Date().getTime()}`);
       if (!response.ok) throw new Error(`Failed to load ${component.path}`);
       const html = await response.text();
       document.getElementById(component.id).innerHTML = html;

@@ -42,16 +42,12 @@ body {
     linear-gradient(to right, var(--p-100) 1px, transparent 1px),
     linear-gradient(to bottom, var(--p-100) 1px, transparent 1px);
   background-size: 20px 30px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 0%,
-    #000 60%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 0%,
-    #000 60%,
-    transparent 100%
-  );
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%,
+      #000 60%,
+      transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%,
+      #000 60%,
+      transparent 100%);
 }
 
 /* Page Content */

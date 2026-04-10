@@ -76,7 +76,7 @@
 
 /* Highlight Items Styles */
 .aboutMe__highlights {
-  
+
   margin-top: 24px;
   width: 100%;
   max-width: 900px;
@@ -385,4 +385,78 @@ body.neon-purple-tech .aboutMe__content_container p {
     transform: translateY(-2px);
     transition: transform 0.3s ease;
   }
+}
+
+.aboutMe__image-container {
+  max-width: 400px;
+}
+
+.shape-top-right,
+.shape-bottom-right {
+  display: none;
+}
+
+.aboutMe__stats {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  margin-top: 0;
+  gap: 16px;
+  padding: 24px;
+}
+
+.stat-item {
+  min-width: 40%;
+}
+
+.stat-item h4 {
+  font-size: 1.5rem;
+}
+}
+
+@media (max-width: 480px) {
+  .aboutMe__title {
+    font-size: 2.2rem;
+  }
+
+  .aboutMe__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .aboutMe__actions .outlineButton,
+  .aboutMe__actions .primaryButton {
+    width: 100%;
+  }
+
+  .stat-item {
+    min-width: 100%;
+  }
+}
+
+/* Dark Mode Overrides (Neon Purple Tech) */
+body.neon-purple-tech .aboutMe__image-container .shape-top-right {
+  background: var(--p-600);
+}
+
+body.neon-purple-tech .aboutMe__image-container .shape-bottom-right {
+  background: var(--accent-secondary, #EC4899);
+}
+
+body.neon-purple-tech .aboutMe__stats {
+  box-shadow: 0 8px 32px rgba(10, 6, 18, 0.5);
+  background-color: rgba(26, 16, 43, 0.95);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+body.neon-purple-tech .social-btn:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
 }

@@ -190,33 +190,48 @@ table {
 /* NEON PURPLE TECH MODE */
 body.neon-purple-tech {
   /* --- 1. CORE COLORS (Neon Purple Tech) --- */
-  --bg-primary: #0A0612; /* deep dark purple-black */
-  --bg-secondary: #1A102B; /* Surface / Card */
-  --bg-tertiary: #2D1B3E; /* Lighter surface for hover */
+  --bg-primary: #0A0612;
+  /* deep dark purple-black */
+  --bg-secondary: #1A102B;
+  /* Surface / Card */
+  --bg-tertiary: #2D1B3E;
+  /* Lighter surface for hover */
 
   /* --- 2. MAPPING VARIABLES --- */
   --foreground-color: var(--bg-primary);
   --background-color: var(--bg-secondary);
 
   /* Grid lines - subtle purple */
-  --p-100: #1A102B; /* Subtle grid lines */
+  --p-100: #1A102B;
+  /* Subtle grid lines */
 
   /* --- 3. TEXT COLORS --- */
-  --text-primary: #EDE9FE; /* Text main */
-  --n-500: #A78BFA; /* Text muted */
-  --n-600: #C4B5FD; /* Brighter secondary text */
-  --p-950: #FFFFFF; /* Pure white for headers */
-  --p-600: #8B5CF6; /* Neon purple for emphasis */
+  --text-primary: #EDE9FE;
+  /* Text main */
+  --n-500: #A78BFA;
+  /* Text muted */
+  --n-600: #C4B5FD;
+  /* Brighter secondary text */
+  --p-950: #FFFFFF;
+  /* Pure white for headers */
+  --p-600: #8B5CF6;
+  /* Neon purple for emphasis */
 
   /* --- 4. ACCENT COLORS --- */
-  --accent-color: #8B5CF6; /* Neon purple primary */
-  --accent-hover: #A78BFA; /* Lighter purple hover */
-  --accent-secondary: #EC4899; /* Soft neon pink */
-  --border-color: #2D1B3E; /* Subtle borders */
+  --accent-color: #8B5CF6;
+  /* Neon purple primary */
+  --accent-hover: #A78BFA;
+  /* Lighter purple hover */
+  --accent-secondary: #EC4899;
+  /* Soft neon pink */
+  --border-color: #2D1B3E;
+  /* Subtle borders */
 
   /* Color codes for transparency */
-  --p-700-code: 139, 92, 246; /* Neon purple RGB */
-  --p-950-code: 10, 6, 18; /* Deep purple-black RGB */
+  --p-700-code: 139, 92, 246;
+  /* Neon purple RGB */
+  --p-950-code: 10, 6, 18;
+  /* Deep purple-black RGB */
 
   /* --- 5. EFFECTS & GRADIENTS --- */
   --main-gradient-color: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
