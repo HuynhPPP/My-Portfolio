@@ -57,23 +57,23 @@
       gap: 12px;
 
 
-      &:nth-child(1) > div.icons-list {
+      &:nth-child(1)>div.icons-list {
         animation: move-left 30s linear infinite;
       }
 
-      &:nth-child(2) > div.icons-list {
+      &:nth-child(2)>div.icons-list {
         animation: move-right 30s linear infinite;
       }
 
       /* Pause animation on hover */
-      &:hover > div.icons-list {
+      &:hover>div.icons-list {
         animation-play-state: paused;
         opacity: 0.8;
         transform: scale(1.02);
       }
 
       /* Smooth transition for hover effects */
-      & > div.icons-list {
+      &>div.icons-list {
         transition: opacity 0.3s ease, transform 0.3s ease;
       }
     }

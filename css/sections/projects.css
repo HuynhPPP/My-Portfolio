@@ -2,24 +2,49 @@
 .projects__section {
   padding: 100px 0;
   position: relative;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: #ffffff;
+  color: #1f2937;
+  overflow: hidden;
+}
+
+.projects__zigzag-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(75, 85, 99, 0.08) 20px, rgba(75, 85, 99, 0.08) 21px),
+    repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(107, 114, 128, 0.06) 30px, rgba(107, 114, 128, 0.06) 31px),
+    repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(55, 65, 81, 0.05) 40px, rgba(55, 65, 81, 0.05) 41px),
+    repeating-linear-gradient(150deg, transparent, transparent 35px, rgba(31, 41, 55, 0.04) 35px, rgba(31, 41, 55, 0.04) 36px);
 }
 
 /* Enhanced background for Neon Purple mode */
+.projects__dark-pattern {
+  display: none;
+}
+
+body.neon-purple-tech .projects__dark-pattern {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #000000;
+  background-image: 
+    radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
+    radial-gradient(ellipse 130% 60% at 75% 15%, rgba(59, 130, 246, 0.10), transparent 65%),
+    radial-gradient(ellipse 80% 90% at 20% 30%, rgba(236, 72, 153, 0.14), transparent 50%),
+    radial-gradient(ellipse 100% 40% at 60% 70%, rgba(16, 185, 129, 0.08), transparent 45%);
+}
+
 body.neon-purple-tech .projects__section {
-  background: linear-gradient(135deg, #0A0612 0%, #1A102B 50%, #2D1B3E 100%);
+  background: transparent;
   position: relative;
 }
 
-body.neon-purple-tech .projects__section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
-  pointer-events: none;
+body.neon-purple-tech .projects__zigzag-pattern {
+  display: none;
 }
 
 .projects_container {

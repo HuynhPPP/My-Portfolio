@@ -1,12 +1,60 @@
-/* Contact Section - Business Card Vibe */
+.contact__section-container {
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+.section__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at top center,
+    rgba(70, 130, 180, 0.5),
+    transparent 70%
+  );
+  filter: blur(80px);
+}
+
+.section__dark-pattern {
+  display: none;
+}
+
+body.neon-purple-tech .section__dark-pattern {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #020617;
+  background-image: 
+    linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+    radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+}
+
+body.neon-purple-tech .contact__section-container {
+  background-color: transparent;
+}
+
+body.neon-purple-tech .section__glow {
+  display: none;
+}
+
 .business-card__section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px 20px;
+  padding: 20px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
 }
 
 .bizcard__wrapper {
