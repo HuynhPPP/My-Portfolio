@@ -206,16 +206,16 @@ body.neon-purple-tech {
   /* Subtle grid lines */
 
   /* --- 3. TEXT COLORS --- */
-  --text-primary: #EDE9FE;
-  /* Text main */
-  --n-500: #A78BFA;
-  /* Text muted */
-  --n-600: #C4B5FD;
-  /* Brighter secondary text */
+  --text-primary: #FFFFFF;
+  /* Text main - pure white for max contrast */
+  --n-500: #C4B5FD;
+  /* Text muted - light lavender, dễ đọc trên nền tối */
+  --n-600: #E2D9FF;
+  /* Secondary text - near-white lavender */
   --p-950: #FFFFFF;
   /* Pure white for headers */
-  --p-600: #8B5CF6;
-  /* Neon purple for emphasis */
+  --p-600: #A78BFA;
+  /* Neon purple for emphasis - sáng hơn để nổi bật */
 
   /* --- 4. ACCENT COLORS --- */
   --accent-color: #8B5CF6;
