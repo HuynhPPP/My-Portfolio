@@ -157,39 +157,26 @@ body.neon-purple-tech .projects__tab--active {
 
 /* Enhanced Project Cards for Neon Purple */
 body.neon-purple-tech .projects_cards {
-  background: #1A102B;
-  border: 1px solid #2D1B3E;
+  background: rgba(26, 16, 43, 0.6);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   backdrop-filter: blur(20px);
   position: relative;
 }
 
-body.neon-purple-tech .projects_cards::before {
-  background: linear-gradient(135deg, transparent 0%, rgba(139, 92, 246, 0.08) 100%);
-}
-
 body.neon-purple-tech .projects_cards:hover {
-  transform: translateY(-12px) scale(1.03) translateZ(0);
-  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.25);
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.3);
   border-color: #8B5CF6;
 }
 
-body.neon-purple-tech .projects_cards:hover::before {
-  opacity: 1;
-  background: linear-gradient(135deg, transparent 0%, rgba(236, 72, 153, 0.1) 100%);
-}
-
 body.neon-purple-tech .projects__cards_titles h1 {
-  color: #EDE9FE;
-  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+  color: #A78BFA;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 body.neon-purple-tech .projects__cards_titles h3 {
-  color: #A78BFA;
-}
-
-body.neon-purple-tech .projects__column_title {
   color: #EDE9FE;
-  text-shadow: 0 2px 10px rgba(139, 92, 246, 0.5);
+  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
 }
 
 /* Tabs - Enhanced */
@@ -263,48 +250,36 @@ body.dark-mode .projects__tab:hover {
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
 }
 
-/* Cards Container */
+/* Cards Container - Unified Grid */
 .projects__cards_container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  width: 100%;
+  margin-top: 40px;
 }
 
-.projects__column {
-  display: flex;
-  flex-direction: column;
-}
-
-.projects__column_title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--p-950);
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-/* Cards Grid - Enhanced */
+/* Unified Grid - Enhanced for 3 columns on desktop */
 .projects__cards_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   position: relative;
   z-index: 2;
 }
 
-/* Project Cards - Enhanced Visibility */
+/* Project Cards - Premium Glassmorphism */
 .projects_cards {
   background: var(--bg-secondary);
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
   border: 1px solid var(--border-color);
   text-decoration: none;
-  display: block;
-  will-change: transform, box-shadow;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: relative;
-  opacity: 1 !important; /* Override animation hiding */
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  opacity: 1 !important;
 }
 
 .projects_cards::before {
@@ -321,8 +296,8 @@ body.dark-mode .projects__tab:hover {
 }
 
 .projects_cards:hover {
-  transform: translateY(-12px) scale(1.02) translateZ(0);
-  box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
   border-color: var(--accent-color);
 }
 
@@ -332,73 +307,59 @@ body.dark-mode .projects__tab:hover {
 
 /* Dark mode enhanced cards */
 body.dark-mode .projects_cards {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: rgba(30, 41, 59, 0.5);
   backdrop-filter: blur(10px);
-}
-
-body.dark-mode .projects_cards:hover {
-  box-shadow: 0 25px 50px rgba(59, 130, 246, 0.25);
-  border-color: var(--accent-color);
-}
-
-/* Staggered animation for project cards */
-.projects__cards_grid .projects_cards {
-  transition-delay: calc(var(--card-index, 0) * 0.1s);
 }
 
 .projects__cards_wrapper {
   width: 100%;
-  height: 220px;
+  aspect-ratio: 16 / 10;
+  height: auto;
   overflow: hidden;
   position: relative;
   z-index: 2;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .projects__cards_img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: brightness(1);
+  object-position: top;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .projects_cards:hover .projects__cards_img {
-  transform: scale(1.1);
-  filter: brightness(1.1);
+  transform: scale(1.08);
 }
 
 .projects__cards_titles {
   padding: 24px;
-  position: relative;
-  z-index: 3;
-  background: var(--bg-secondary);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
 }
 
 .projects__cards_titles h1 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--p-950);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-color);
   margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .projects__cards_titles h3 {
-  font-size: 1rem;
-  color: var(--n-500);
-  font-weight: 500;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Dark mode enhanced text */
-body.dark-mode .projects__cards_titles h1 {
+  font-size: 1.4rem;
   color: var(--p-950);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
 }
 
 body.dark-mode .projects__cards_titles h3 {
-  color: var(--n-400);
+  color: #f8fafc;
 }
 
 /* Animation delays */
@@ -419,27 +380,30 @@ body.dark-mode .projects__cards_titles h3 {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .projects__cards_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
 @media (max-width: 768px) {
   .projects__cards_container {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  
-  .section__title {
-    font-size: 2rem;
-  }
-  
-  .projects__tabs {
-    gap: 12px;
-  }
-  
-  .projects__tab {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    margin-top: 30px;
   }
   
   .projects__cards_grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .section__title {
+    font-size: 2.2rem;
+  }
+  
+  .section__description {
+    font-size: 1.1rem;
+    margin-top: 20px;
   }
 }
 
