@@ -30,12 +30,12 @@ body.neon-purple-tech .projects__dark-pattern {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: #000000;
+  background: var(--bg-primary);
   background-image: 
-    radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
-    radial-gradient(ellipse 130% 60% at 75% 15%, rgba(59, 130, 246, 0.10), transparent 65%),
-    radial-gradient(ellipse 80% 90% at 20% 30%, rgba(236, 72, 153, 0.14), transparent 50%),
-    radial-gradient(ellipse 100% 40% at 60% 70%, rgba(16, 185, 129, 0.08), transparent 45%);
+    radial-gradient(ellipse 110% 70% at 25% 80%, rgba(14, 165, 233, 0.12), transparent 55%),
+    radial-gradient(ellipse 130% 60% at 75% 15%, rgba(45, 212, 191, 0.10), transparent 65%),
+    radial-gradient(ellipse 80% 90% at 20% 30%, rgba(56, 189, 248, 0.14), transparent 50%),
+    radial-gradient(ellipse 100% 40% at 60% 70%, rgba(14, 165, 233, 0.08), transparent 45%);
 }
 
 body.neon-purple-tech .projects__section {
@@ -111,8 +111,8 @@ body.neon-purple-tech .projects__section::before {
 }
 
 body.neon-purple-tech .section__title {
-  text-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
-  background: linear-gradient(135deg, #EDE9FE 0%, #A78BFA 100%);
+  text-shadow: 0 0 25px rgba(14, 165, 233, 0.6);
+  background: linear-gradient(135deg, #FFF 0%, #38BDF8 50%, #2DD4BF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -120,63 +120,59 @@ body.neon-purple-tech .section__title {
 
 body.neon-purple-tech .section__title::after {
   background: var(--main-gradient-color);
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.5);
 }
 
 body.neon-purple-tech .section__description {
-  color: #A78BFA;
-  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  color: #94A3B8;
+  text-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
 }
 
 /* Enhanced Tabs for Neon Purple */
 body.neon-purple-tech .projects__tab {
-  background: rgba(26, 16, 43, 0.8);
+  background: rgba(30, 41, 59, 0.8);
   backdrop-filter: blur(15px);
-  border: 2px solid #2D1B3E;
-  color: #A78BFA;
+  border: 2px solid #334155;
+  color: #94A3B8;
   position: relative;
   overflow: hidden;
 }
 
-body.neon-purple-tech .projects__tab::before {
-  background: var(--main-gradient-color);
-}
-
 body.neon-purple-tech .projects__tab:hover {
-  border-color: #8B5CF6;
-  color: #EDE9FE;
-  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
+  border-color: #38BDF8;
+  color: #F1F5F9;
+  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.3);
 }
 
 body.neon-purple-tech .projects__tab--active {
   background: var(--main-gradient-color);
-  border-color: #8B5CF6;
+  border-color: #38BDF8;
   color: white;
-  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
 }
 
-/* Enhanced Project Cards for Neon Purple */
+/* Enhanced Project Cards for Deep Ocean */
 body.neon-purple-tech .projects_cards {
-  background: rgba(26, 16, 43, 0.6);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(14, 165, 233, 0.2);
   backdrop-filter: blur(20px);
   position: relative;
 }
 
 body.neon-purple-tech .projects_cards:hover {
   transform: translateY(-12px);
-  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.3);
-  border-color: #8B5CF6;
+  box-shadow: 0 25px 60px rgba(14, 165, 233, 0.3);
+  border-color: #38BDF8;
 }
 
 body.neon-purple-tech .projects__cards_titles h1 {
-  color: #A78BFA;
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  color: #38BDF8;
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
 }
 
 body.neon-purple-tech .projects__cards_titles h3 {
-  color: #EDE9FE;
-  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+  color: #F1F5F9;
+  text-shadow: 0 2px 8px rgba(14, 165, 233, 0.4);
 }
 
 /* Tabs - Enhanced */

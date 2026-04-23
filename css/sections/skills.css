@@ -27,7 +27,6 @@
   & p {
     margin-top: 12px;
     color: var(--n-500);
-    max-width: 60ch;
   }
 }
 

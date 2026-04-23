@@ -45,12 +45,82 @@
     
     // Update button icon or text based on theme
     if (theme === 'neon-purple') {
-      toggleBtn.innerHTML = '🟣'; // Purple circle for neon mode
+      toggleBtn.innerHTML = '🔵'; // Cyan circle for ocean mode
       toggleBtn.title = 'Switch to Light Mode';
     } else {
       toggleBtn.innerHTML = '☀️'; // Sun for light mode
-      toggleBtn.title = 'Switch to Neon Purple Mode';
+      toggleBtn.title = 'Switch to Dark Ocean Mode';
     }
+  };
+
+  // 1.5. Language Logic
+  const initLanguage = () => {
+    const langToggle = document.getElementById('lang-toggle');
+    const currentLang = localStorage.getItem('lang') || 'vi';
+    
+    // Set initial language
+    applyLanguage(currentLang);
+    
+    if (langToggle) {
+      langToggle.addEventListener('click', () => {
+        const lang = localStorage.getItem('lang') || 'vi';
+        const newLang = lang === 'vi' ? 'en' : 'vi';
+        applyLanguage(newLang);
+      });
+    }
+  };
+
+  const applyLanguage = (lang) => {
+    localStorage.setItem('lang', lang);
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) {
+      langToggle.textContent = lang === 'vi' ? 'VN' : 'EN';
+    }
+    
+    // Update all elements with data-i18n
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        if (translations[lang][key].includes('<')) {
+          el.innerHTML = translations[lang][key];
+        } else {
+          el.textContent = translations[lang][key];
+        }
+      }
+    });
+
+    // Update dynamically rendered projects
+    renderProjects(lang);
+
+    // Update document language attribute
+    document.documentElement.lang = lang;
+  };
+
+  const renderProjects = (lang) => {
+    const grid = document.querySelector('.projects__cards_grid');
+    if (!grid || !projectsData) return;
+
+    grid.innerHTML = projectsData.map((project, index) => `
+      <a href="${project.link}" target="_blank" rel="noopener noreferrer" style="--card-index: ${index}">
+        <div class="projects_cards animate-on-scroll" 
+          data-animation="fade-in-up-sm"
+          data-description="${project.description[lang]}"
+          data-images="${project.images.join(',')}"
+          data-techs="${project.techs.join(',')}">
+          <div class="projects__cards_wrapper">
+            <img src="${project.images[0]}" alt="${project.title[lang]}" class="projects__cards_img" loading="lazy" />
+          </div>
+          <div class="projects__cards_titles">
+            <h1>${project.category[lang]}</h1>
+            <h3>${project.title[lang]}</h3>
+          </div>
+        </div>
+      </a>
+    `).join('');
+
+    // Re-initialize project previews after rendering
+    initProjectPreviews();
   };
 
   // 2. Components Logic (Runs after components are loaded)
@@ -432,9 +502,14 @@
         }, 600);
       });
     });
+
+    // Re-apply language after components are loaded
+    const currentLang = localStorage.getItem('lang') || 'vi';
+    applyLanguage(currentLang);
   };
 
   // Initialize
   initTheme();
+  initLanguage();
   document.addEventListener('componentsLoaded', initComponentsLogic);
 })();

@@ -187,66 +187,69 @@ table {
   --gradient-color: linear-gradient(#fff7ed 10%, #ffffff);
 }
 
-/* NEON PURPLE TECH MODE */
+/* DEEP OCEAN TECH MODE (Updated from Neon Purple) */
 body.neon-purple-tech {
-  /* --- 1. CORE COLORS (Neon Purple Tech) --- */
-  --bg-primary: #0A0612;
-  /* deep dark purple-black */
-  --bg-secondary: #1A102B;
-  /* Surface / Card */
-  --bg-tertiary: #2D1B3E;
-  /* Lighter surface for hover */
+  /* --- 1. CORE COLORS --- */
+  --bg-primary: #0F172A;
+  /* Midnight Blue */
+  --bg-secondary: #1E293B;
+  /* Deep Slate */
+  --bg-tertiary: #334155;
+  /* Lighter Slate for hover */
 
   /* --- 2. MAPPING VARIABLES --- */
   --foreground-color: var(--bg-primary);
   --background-color: var(--bg-secondary);
-
-  /* Grid lines - subtle purple */
-  --p-100: #1A102B;
-  /* Subtle grid lines */
+  --p-100: #1E293B;
+  /* Grid lines */
 
   /* --- 3. TEXT COLORS --- */
-  --text-primary: #FFFFFF;
-  /* Text main - pure white for max contrast */
-  --n-500: #C4B5FD;
-  /* Text muted - light lavender, dễ đọc trên nền tối */
-  --n-600: #E2D9FF;
-  /* Secondary text - near-white lavender */
+  --text-primary: #F1F5F9;
+  /* Near white */
+  --n-500: #94A3B8;
+  /* Muted Slate */
+  --n-600: #CBD5E1;
+  /* Secondary text */
   --p-950: #FFFFFF;
-  /* Pure white for headers */
-  --p-600: #A78BFA;
-  /* Neon purple for emphasis - sáng hơn để nổi bật */
+  --p-600: #38BDF8;
+  /* Electric Cyan accent */
 
   /* --- 4. ACCENT COLORS --- */
-  --accent-color: #8B5CF6;
-  /* Neon purple primary */
-  --accent-hover: #A78BFA;
-  /* Lighter purple hover */
-  --accent-secondary: #EC4899;
-  /* Soft neon pink */
-  --border-color: #2D1B3E;
-  /* Subtle borders */
+  --accent-color: #0EA5E9;
+  /* Cyan 600 */
+  --accent-hover: #38BDF8;
+  /* Cyan 400 */
+  --accent-secondary: #2DD4BF;
+  /* Teal accent */
+  --border-color: #334155;
 
   /* Color codes for transparency */
-  --p-700-code: 139, 92, 246;
-  /* Neon purple RGB */
-  --p-950-code: 10, 6, 18;
-  /* Deep purple-black RGB */
+  --p-700-code: 14, 165, 233;
+  --p-950-code: 15, 23, 42;
 
   /* --- 5. EFFECTS & GRADIENTS --- */
-  --main-gradient-color: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-  --gradient-color: linear-gradient(#0A0612 10%, #1A102B);
+  --main-gradient-color: linear-gradient(135deg, #0EA5E9 0%, #2DD4BF 100%);
+  --gradient-color: linear-gradient(#0F172A 10%, #1E293B);
+  --mesh-gradient:
+    radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(45, 212, 191, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(45, 212, 191, 0.15) 0px, transparent 50%);
 
-  /* Glow Effects - Neon Purple Tech */
-  --glow-strong: 0 0 25px rgba(139, 92, 246, 0.6);
-  --glow-soft: 0 0 15px rgba(139, 92, 246, 0.3);
-  --glow-subtle: 0 0 8px rgba(236, 72, 153, 0.2);
-  --glow-pink: 0 0 20px rgba(236, 72, 153, 0.4);
+  /* Glow Effects - Deep Ocean */
+  --glow-strong: 0 0 25px rgba(14, 165, 233, 0.5);
+  --glow-soft: 0 0 15px rgba(14, 165, 233, 0.25);
+  --glow-subtle: 0 0 8px rgba(45, 212, 191, 0.2);
+  --glow-pink: 0 0 20px rgba(45, 212, 191, 0.3);
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(56, 189, 248, 0.2);
 }
 
 /* Neon Purple Tech Mode Specific Styles */
 body.neon-purple-tech {
   background-color: var(--bg-primary);
+  background-image: var(--mesh-gradient);
+  background-attachment: fixed;
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -386,7 +389,7 @@ body.neon-purple-tech .aboutMe__container,
 body.neon-purple-tech .aboutMe__content_container,
 body.neon-purple-tech .projects_cards,
 body.neon-purple-tech .skills__grid_item {
-  border-radius: 12px !important;
+  border-radius: 24px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-secondary);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
