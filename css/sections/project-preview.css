@@ -4,20 +4,19 @@
   z-index: 9999;
   width: 800px;
   max-width: 90vw;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-secondary);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
   box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.15),
-    0 8px 24px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+    0 25px 60px rgba(0, 0, 0, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.05);
   padding: 0;
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(30px) scale(0.9);
+  transform: translateY(30px) scale(0.95);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   pointer-events: none;
 }
@@ -31,12 +30,11 @@
 
 /* Neon Purple Tech Mode */
 body.neon-purple-tech #project-preview-popup {
-  background: rgba(26, 16, 43, 0.95);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(30, 41, 59, 0.9); /* Deep Slate with opacity */
+  border: 1px solid rgba(14, 165, 233, 0.3);
   box-shadow:
-    0 30px 80px rgba(10, 6, 18, 0.4),
-    0 15px 35px rgba(139, 92, 246, 0.2),
-    0 0 0 1px rgba(139, 92, 246, 0.1);
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(14, 165, 233, 0.1);
 }
 
 /* Slider Section - Enhanced */
@@ -44,9 +42,13 @@ body.neon-purple-tech #project-preview-popup {
   width: 100%;
   aspect-ratio: 16 / 10;
   position: relative;
-  background: linear-gradient(135deg, #0A0612 0%, #1A102B 100%);
+  background: var(--n-100);
   overflow: hidden;
-  border-radius: 16px 16px 0 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+body.neon-purple-tech .preview-slider {
+  background: #0f172a; /* Deep Ocean background */
 }
 
 .preview-slides-container {
@@ -69,7 +71,7 @@ body.neon-purple-tech #project-preview-popup {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: #0A0612;
+  background: transparent;
   transition: transform 0.3s ease;
 }
 
@@ -82,12 +84,12 @@ body.neon-purple-tech #project-preview-popup {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--bg-secondary);
   backdrop-filter: blur(10px);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 40px;
-  height: 40px;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -95,79 +97,75 @@ body.neon-purple-tech #project-preview-popup {
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .slider-btn:hover {
-  background: rgba(139, 92, 246, 0.8);
-  border-color: rgba(139, 92, 246, 0.5);
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
 }
 
-/* Neon Purple Tech Mode slider buttons */
 body.neon-purple-tech .slider-btn {
-  background: rgba(26, 16, 43, 0.8);
-  border-color: rgba(139, 92, 246, 0.3);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
 }
 
 body.neon-purple-tech .slider-btn:hover {
-  background: rgba(139, 92, 246, 0.9);
-  border-color: rgba(139, 92, 246, 0.6);
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
 }
 
 .prev-btn {
-  left: 12px;
+  left: 16px;
 }
 
 .next-btn {
-  right: 12px;
+  right: 16px;
 }
 
 /* Content Section - Enhanced */
 .preview-content {
-  padding: 28px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  border-radius: 0 0 16px 16px;
+  background: var(--bg-secondary);
 }
 
 .preview-title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
-  color: var(--p-950);
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.2;
 }
 
 .preview-description {
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--n-600);
   margin: 0;
-  font-weight: 400;
 }
 
-/* Neon Purple Tech Mode content */
 body.neon-purple-tech .preview-content {
-  background: rgba(26, 16, 43, 0.8);
-  border-top: 1px solid rgba(139, 92, 246, 0.2);
+  background: var(--bg-secondary);
 }
 
 body.neon-purple-tech .preview-title {
-  color: #EDE9FE;
-  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  color: var(--text-primary);
+  text-shadow: none;
 }
 
 body.neon-purple-tech .preview-description {
-  color: #A78BFA;
-  text-shadow: 0 1px 4px rgba(139, 92, 246, 0.2);
+  color: var(--n-500);
+  text-shadow: none;
 }
 
 /* Tech Badges - Enhanced */
@@ -182,48 +180,32 @@ body.neon-purple-tech .preview-description {
   font-size: 0.8rem;
   font-weight: 600;
   padding: 6px 14px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
-  color: #6366f1;
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: var(--p-100-alpha);
+  color: var(--accent-color);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.tech-badge::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
 }
 
 .tech-badge:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
-.tech-badge:hover::before {
-  left: 100%;
-}
-
-/* Neon Purple Tech Mode badges */
 body.neon-purple-tech .tech-badge {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.1));
-  color: #EDE9FE;
-  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--accent-color);
+  border-color: rgba(14, 165, 233, 0.2);
 }
 
 body.neon-purple-tech .tech-badge:hover {
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-  border-color: rgba(236, 72, 153, 0.6);
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
 }
 
 /* Responsive Design - Enhanced */
@@ -344,11 +326,11 @@ body.neon-purple-tech .preview-slider::after {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--bg-secondary);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -361,12 +343,19 @@ body.neon-purple-tech .preview-slider::after {
   line-height: 1;
   transition: all 0.3s ease;
   padding: 0;
-  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .preview-close-btn:hover {
-  background: rgba(220, 38, 38, 0.8);
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
   transform: scale(1.1) rotate(90deg);
+}
+
+body.neon-purple-tech .preview-close-btn {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
 }
 
 /* Backdrop */
