@@ -21,7 +21,7 @@
       toggleBtn.addEventListener('click', () => {
         const currentTheme = localStorage.getItem('theme') || 'light';
         let newTheme;
-        
+
         if (currentTheme === 'light') {
           newTheme = 'neon-purple';
           body.classList.add('neon-purple-tech');
@@ -29,9 +29,9 @@
           newTheme = 'light';
           body.classList.remove('neon-purple-tech');
         }
-        
+
         localStorage.setItem('theme', newTheme);
-        
+
         // Update theme toggle button appearance
         updateThemeToggleBtn(newTheme);
       });
@@ -42,7 +42,7 @@
   const updateThemeToggleBtn = (theme) => {
     const toggleBtn = document.getElementById('theme-toggle');
     if (!toggleBtn) return;
-    
+
     // Update button icon or text based on theme
     if (theme === 'neon-purple') {
       toggleBtn.innerHTML = '🔵'; // Cyan circle for ocean mode
@@ -57,10 +57,10 @@
   const initLanguage = () => {
     const langToggle = document.getElementById('lang-toggle');
     const currentLang = localStorage.getItem('lang') || 'vi';
-    
+
     // Set initial language
     applyLanguage(currentLang);
-    
+
     if (langToggle) {
       langToggle.addEventListener('click', () => {
         const lang = localStorage.getItem('lang') || 'vi';
@@ -76,7 +76,7 @@
     if (langToggle) {
       langToggle.textContent = lang === 'vi' ? 'VN' : 'EN';
     }
-    
+
     // Update all elements with data-i18n
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
@@ -153,13 +153,13 @@
     // Enhanced Scroll Animation Logic
     const initScrollAnimations = () => {
       const animatedElements = document.querySelectorAll('.animate-on-scroll');
-      
+
       // Set up staggered animations for project cards
       const projectCards = document.querySelectorAll('.projects_cards');
       projectCards.forEach((card, index) => {
         card.style.setProperty('--card-index', index);
       });
-      
+
       // Performance-optimized observer with multiple thresholds
       const observerOptions = {
         threshold: [0.1, 0.3, 0.6],
@@ -169,15 +169,15 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           const element = entry.target;
-          
+
           if (entry.isIntersecting) {
             // Get animation type from data attribute
             const animationType = element.getAttribute('data-animation') || 'fade-in-up';
-            
+
             // Add animation class with performance optimization
             requestAnimationFrame(() => {
               element.classList.add(`animate-${animationType}`);
-              
+
               // Add staggered animation for child elements if specified
               const staggerChildren = element.querySelectorAll('[data-stagger]');
               staggerChildren.forEach((child, index) => {
@@ -186,7 +186,7 @@
                   child.classList.add('animate-stagger-reveal');
                 }, delay);
               });
-              
+
               // Special handling for project cards grid
               if (element.classList.contains('projects__cards_grid')) {
                 const cards = element.querySelectorAll('.projects_cards');
@@ -197,7 +197,7 @@
                 });
               }
             });
-            
+
             // Remove from observer after animation
             setTimeout(() => {
               observer.unobserve(element);
@@ -215,10 +215,10 @@
     // Parallax scroll effect for specific elements
     const initParallaxEffects = () => {
       const parallaxElements = document.querySelectorAll('[data-parallax]');
-      
+
       const updateParallax = () => {
         const scrolled = window.pageYOffset;
-        
+
         parallaxElements.forEach((element) => {
           const speed = element.getAttribute('data-parallax') || 0.5;
           const yPos = -(scrolled * speed);
@@ -244,23 +244,23 @@
     const initScrollProgress = () => {
       const sections = document.querySelectorAll('section[id]');
       const progressBars = document.querySelectorAll('[data-scroll-progress]');
-      
+
       const updateProgress = () => {
         const scrolled = window.pageYOffset;
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
-        
+
         // Update overall progress
         const overallProgress = scrolled / (documentHeight - windowHeight);
         progressBars.forEach(bar => {
           bar.style.transform = `scaleX(${overallProgress})`;
         });
-        
+
         // Update active section
         sections.forEach(section => {
           const rect = section.getBoundingClientRect();
           const isActive = rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5;
-          
+
           if (isActive) {
             // Update navigation or other indicators
             const navLinks = document.querySelectorAll(`[href="#${section.id}"]`);
@@ -293,7 +293,7 @@
 
     // Project Previews Logic
     initProjectPreviews();
-    
+
     // Contact Component Logic
     initContactComponent();
   };
@@ -320,12 +320,20 @@
       document.body.appendChild(popup);
     }
 
-    const showPopup = (card, data, link) => {
-      const images = data.images ? data.images.split(',') : [];
-      const techs = data.techs ? data.techs.split(',') : [];
+    const showPopup = (card, link) => {
+      // Read data fresh from DOM at click time → always reflects current language after re-render
+      const lang = localStorage.getItem('lang') || 'vi';
+      const imagesRaw = card.getAttribute('data-images') || '';
+      const techsRaw = card.getAttribute('data-techs') || '';
+      const description = card.getAttribute('data-description') || '';
+      const images = imagesRaw ? imagesRaw.split(',') : [];
+      const techs = techsRaw ? techsRaw.split(',') : [];
       let currentSlide = 0;
 
       if (images.length === 0) return;
+
+      const visitLabel = lang === 'vi' ? 'Xem website' : 'Visit website';
+      const title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
 
       // Build popup content
       popup.innerHTML = `
@@ -334,23 +342,22 @@
           <div class="preview-slides-container">
             ${images.map((img) => `<div class="preview-slide"><img src="${img.trim()}" alt="Preview" loading="lazy"></div>`).join('')}
           </div>
-          ${
-            images.length > 1
-              ? `
+          ${images.length > 1
+            ? `
             <button class="slider-btn prev-btn" aria-label="Previous">&larr;</button>
             <button class="slider-btn next-btn" aria-label="Next">&rarr;</button>
           `
-              : ''
+            : ''
           }
         </div>
         <div class="preview-content">
-          <h2 class="preview-title">${card.querySelector('h3') ? card.querySelector('h3').textContent : 'Project Title'}</h2>
-          <p class="preview-description">${data.description}</p>
+          <h2 class="preview-title">${title}</h2>
+          <p class="preview-description">${description}</p>
           <div class="preview-tech-list">
             ${techs.map((tech) => `<span class="tech-badge">${tech.trim()}</span>`).join('')}
           </div>
           <div class="preview-actions">
-            <a href="${link}" target="_blank" rel="noopener noreferrer" class="preview-visit-btn">Xem website</a>
+            <a href="${link}" target="_blank" rel="noopener noreferrer" class="preview-visit-btn">${visitLabel}</a>
           </div>
         </div>
       `;
@@ -410,28 +417,26 @@
       const parentLink = card.closest('a');
       const link = parentLink ? parentLink.getAttribute('href') : '#';
 
-      const data = {
-        description: card.getAttribute('data-description'),
-        images: card.getAttribute('data-images'),
-        techs: card.getAttribute('data-techs'),
-      };
-
-      if (!data.description) return; // Skip if no detailed info
+      // Skip cards that have no preview data
+      if (!card.getAttribute('data-description')) return;
 
       // Handle click instead of hover
       if (parentLink) {
         parentLink.addEventListener('click', (e) => {
           e.preventDefault(); // Stop navigation
-          showPopup(card, data, link);
+          showPopup(card, link);
         });
       } else {
         card.addEventListener('click', () => {
-          showPopup(card, data, '#');
+          showPopup(card, '#');
         });
       }
     });
 
-    // Close on backdrop click
+    // Close on backdrop click — use replaceWith trick to remove old listeners
+    const newBackdrop = backdrop.cloneNode(true);
+    backdrop.parentNode.replaceChild(newBackdrop, backdrop);
+    backdrop = newBackdrop;
     backdrop.addEventListener('click', hidePopup);
 
     // Close on 'X' button or general click inside popup
@@ -474,7 +479,7 @@
       method.addEventListener('mouseenter', () => {
         method.style.transform = 'translateY(-4px) scale(1.02)';
       });
-      
+
       method.addEventListener('mouseleave', () => {
         method.style.transform = 'translateY(0) scale(1)';
       });
@@ -483,20 +488,20 @@
     // Add ripple effect to contact buttons
     const contactButtons = document.querySelectorAll('.contact__btn');
     contactButtons.forEach(btn => {
-      btn.addEventListener('click', function(e) {
+      btn.addEventListener('click', function (e) {
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = x + 'px';
         ripple.style.top = y + 'px';
         ripple.classList.add('ripple');
-        
+
         this.appendChild(ripple);
-        
+
         setTimeout(() => {
           ripple.remove();
         }, 600);
